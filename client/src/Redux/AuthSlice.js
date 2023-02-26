@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { API_LOGIN, LOGIN_F, LOGIN_S, LS_AUTHTOKEN, LS_USER } from "../constants";
+import { API_LOGIN, API_REGISTER, LOGIN_F, LOGIN_S, LS_AUTHTOKEN, LS_USER } from "../constants";
 
 const initialState = {
   // Global loader for api 
@@ -28,6 +28,26 @@ export const loginAction = (data) => ({
     }),
   },
 });
+
+export const registerAction = (data) => ({
+  type: "API",
+  payload: {
+    url: API_REGISTER,
+    method: "POST",
+    data: data,
+    hideLoader: false,
+    success: (data) => ({
+      type: LOGIN_S,
+      payload: data,
+    }),
+    error: (data) => ({
+      type: LOGIN_F,
+      payload: {},
+    }),
+  },
+});
+
+
 
 // Reducer
 const loginSlice = createSlice({

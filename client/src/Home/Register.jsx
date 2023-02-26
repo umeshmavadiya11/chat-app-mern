@@ -9,7 +9,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import history from '../Utilities/history';
-// import { registerAction } from '../Redux/AuthSlice';
+import { registerAction } from '../Redux/AuthSlice';
 import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
@@ -70,16 +70,16 @@ const Register = props => {
                             { setStatus, setSubmitting }
                         ) => {
                             setStatus();
-                            // dispatch(registerAction({ name, username, password, password2 }))
-                            // .then(() => {
-                            //         const { from } = history.location.state || {
-                            //             from: { pathname: '/chat' },
-                            //         };
-                            //         history.push(from);
-                            //     }).catch(error => {
-                            //     setSubmitting(false);
-                            //     setStatus(error);
-                            // })
+                            dispatch(registerAction({ name, username, password, password2 }))
+                            .then(() => {
+                                    const { from } = history.location.state || {
+                                        from: { pathname: '/chat' },
+                                    };
+                                    history.push(from);
+                                }).catch(error => {
+                                setSubmitting(false);
+                                setStatus(error);
+                            })
                         }}
                         validateOnChange={false}
                         validateOnBlur={false}

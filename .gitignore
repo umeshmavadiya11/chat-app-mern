@@ -1,0 +1,13 @@
+./client/node_modules
+
+client/node_modules
+
+./node_modules
+
+.package-lock.josn
+
+node_modules
+yarn-error.log
+yarn.lock
+package-lock.json
+build
